@@ -4,4 +4,6 @@ sudo: false
 jdk:
   - oraclejdk8
 
-install: mvn clean site failsafe:integration-test -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+install: mvn clean site -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+
+script: "mvn failsafe:integration-test"
