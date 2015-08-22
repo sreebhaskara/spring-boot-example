@@ -6,4 +6,11 @@ jdk:
 
 install: mvn clean site -DbuildNumber=${TRAVIS_BUILD_NUMBER}
 
-script: "mvn failsafe:integration-test"
+script: "mvn verify"
+
+notifications:
+  email:
+    recipients:
+     - eis@iki.fi
+    on_success: change
+    on_failure: always
