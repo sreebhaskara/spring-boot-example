@@ -27,6 +27,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- below for robot framework -->
+        <dependency>
+          <groupId>org.seleniumhq.selenium</groupId>
+          <artifactId>selenium-java</artifactId>
+          <version>2.45.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.markusbernhardt</groupId>
+            <artifactId>robotframework-selenium2library-java</artifactId>
+            <version>1.4.0.7</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -53,6 +68,23 @@
                   </goals>
                 </execution>
               </executions>
+            </plugin>
+            <!-- below for robot acceptance tests -->
+            <plugin>
+                <!-- to run robot acceptance tests: mvn robotframework:run -->
+                <groupId>org.robotframework</groupId>
+                <artifactId>robotframework-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <!-- execution below can be used, if tests are needed on mvn:integration-test-->
+                <!--
+                <executions>
+                  <execution>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </execution>
+                </executions>
+                -->
             </plugin>
         </plugins>
     </build>
