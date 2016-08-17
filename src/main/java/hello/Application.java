@@ -10,7 +10,9 @@ import org.springframework.context.ApplicationContext;
 public class Application {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+        SpringApplication app = new SpringApplication(Application.class);
+        app.setLogStartupInfo(false);
+        ApplicationContext ctx = app.run(args);
 
         System.out.println("Let's inspect the beans provided by Spring Boot:");
 
