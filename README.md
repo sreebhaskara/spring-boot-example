@@ -9,6 +9,7 @@ Simple Spring Boot app
 Borrows from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - "runme" scripts
   - integration test
+  - resteasy tests
   - robot acceptance test
   - Travis configurations
 
