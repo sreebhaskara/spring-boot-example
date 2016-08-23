@@ -4,4 +4,5 @@ target
 # eclipse
 .classpath
 .project
+.springBeans
 .settings/
