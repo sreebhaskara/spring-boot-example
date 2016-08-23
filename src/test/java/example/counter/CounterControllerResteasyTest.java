@@ -1,4 +1,4 @@
-package hello;
+package example.counter;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -6,19 +6,22 @@ import org.junit.Test;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
-public class HelloControllerResteasyTest {
+public class CounterControllerResteasyTest {
 
     @Test
     public void testRequest() {
         RestAssuredMockMvc
                 .given()
-                    .standaloneSetup(new HelloController())
+                    .standaloneSetup(new CounterController())
                     .log().ifValidationFails()
+                    .param("int1", Integer.valueOf(1))
+                    .param("int2", Integer.valueOf(2))
                 .when()
-                    .get("/")
+                    .async()
+                    .post("/add")
                 .then()
                     .log().ifValidationFails()
                     .statusCode(200)
-                    .content(equalTo("Greetings from Spring Boot!"));
+                    .content("value",equalTo(3));
     }
 }
