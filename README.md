@@ -19,3 +19,5 @@ Answers to [http://localhost:8080/](http://localhost:8080/) (GET) and
 [http://localhost:8080/add](http://localhost:8080/add) (POST).
 
 See [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) for usage.
+
+Missing coverage is about main method, which has too much debug output to be run in Travis.
