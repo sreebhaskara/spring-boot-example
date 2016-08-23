@@ -15,6 +15,7 @@ Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - Travis configurations
   - Swagger documentation
 
-Answers to http://localhost:8080/ (GET) and http://localhost:8080/add (POST).
+Answers to [http://localhost:8080/](http://localhost:8080/) (GET) and
+[http://localhost:8080/add](http://localhost:8080/add) (POST).
 
-See http://localhost:8080/swagger-ui.html for usage.
+See [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) for usage.
