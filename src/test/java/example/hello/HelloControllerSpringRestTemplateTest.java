@@ -27,7 +27,7 @@ public class HelloControllerSpringRestTemplateTest {
 
     @Before
     public void setUp() throws Exception {
-        this.base = new URL("http://localhost:" + port + "/");
+        base = new URL("http://localhost:" + port + "/");
         template = new TestRestTemplate();
     }
 

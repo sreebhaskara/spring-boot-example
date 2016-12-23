@@ -33,7 +33,7 @@ public class CounterControllerSpringRestTemplateTest {
 
     @Before
     public void setUp() throws Exception {
-        this.base = new URL("http://localhost:" + port + "/add");
+        base = new URL("http://localhost:" + port + "/add");
         template = new TestRestTemplate();
     }
 
