@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,7 +25,7 @@ public class CounterControllerSpringBootResteasyExceptionTest {
     @MockBean
     CounterService counterService;
     
-    @Value("${local.server.port}")
+    @LocalServerPort
     int port;
 
     @Before
