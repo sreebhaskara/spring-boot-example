@@ -33,7 +33,7 @@ public class CounterControllerSpringBootResteasyExceptionTest {
         RestAssured.port = port;
     }
     @Test
-    public void testRequest() {
+    public void testUnauthorizedRequest() {
         assertNotNull(counterService);
         when(counterService.count(notNull(CounterRequest.class)))
             .thenThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
@@ -48,5 +48,22 @@ public class CounterControllerSpringBootResteasyExceptionTest {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(401);
+    }
+    @Test
+    public void testNPERequest() {
+        assertNotNull(counterService);
+        when(counterService.count(notNull(CounterRequest.class)))
+            .thenThrow(new NullPointerException());
+        RestAssured
+                .given()
+                    .accept("application/json")
+                    .contentType(ContentType.JSON)
+                    .body("{\"int1\":1, \"int2\":2}")
+                    .log().ifValidationFails()
+                .when()
+                    .post("/add")
+                .then()
+                    .log().ifValidationFails()
+                    .statusCode(500);
     }
 }
