@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MockServletContext.class)
 @WebAppConfiguration
-public class HelloControllerTest {
+public class HelloControllerSpringMockMVCTest {
 
     private MockMvc mvc;
 

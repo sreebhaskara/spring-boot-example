@@ -1,4 +1,4 @@
-package example;
+package example.hello;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HelloControllerIT {
+public class HelloControllerSpringRestTemplateTest {
 
     @Value("${local.server.port}")
     private int port;

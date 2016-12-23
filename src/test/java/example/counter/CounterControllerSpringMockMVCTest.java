@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = MockServletContext.class)
-public class CounterControllerTest {
+public class CounterControllerSpringMockMVCTest {
 
     private MockMvc mvc;
 

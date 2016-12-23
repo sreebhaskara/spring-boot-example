@@ -1,4 +1,4 @@
-package example;
+package example.counter;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -26,7 +26,7 @@ import example.counter.CounterResult;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerIT {
+public class CounterControllerSpringRestTemplateTest {
 
     @Value("${local.server.port}")
     private int port;
@@ -54,10 +54,10 @@ public class CounterControllerIT {
         headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON.toString());
         headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON.toString());
 
-        String body = "{\"int1\":2, \"int2\":3}";
+        CounterRequest cRequest = new CounterRequest(2, 3);
         
-        HttpEntity<String> request = new HttpEntity<String>(
-                body, headers);
+        HttpEntity<CounterRequest> request = new HttpEntity<CounterRequest>(
+        		cRequest, headers);
 
         ResponseEntity<MyCounterResult> response = template.postForEntity(base.toString(), request,
                 MyCounterResult.class);
