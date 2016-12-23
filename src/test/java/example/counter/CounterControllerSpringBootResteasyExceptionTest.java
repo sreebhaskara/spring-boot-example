@@ -1,26 +1,30 @@
 package example.counter;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.notNull;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.web.client.HttpClientErrorException;
 
-import example.Application;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringBootResteasyTest {
+public class CounterControllerSpringBootResteasyExceptionTest {
+ 
+    @MockBean
+    CounterService counterService;
+    
     @Value("${local.server.port}")
     int port;
 
@@ -30,6 +34,9 @@ public class CounterControllerSpringBootResteasyTest {
     }
     @Test
     public void testRequest() {
+        assertNotNull(counterService);
+        when(counterService.count(notNull(CounterRequest.class)))
+            .thenThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
         RestAssured
                 .given()
                     .accept("application/json")
@@ -40,7 +47,6 @@ public class CounterControllerSpringBootResteasyTest {
                     .post("/add")
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
-                    .content("value",equalTo(3));
+                    .statusCode(401);
     }
 }

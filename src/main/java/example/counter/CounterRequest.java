@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class CounterRequest {
     @NotNull
-    private Integer int1;
+    private final Integer int1;
     @NotNull
-    private Integer int2;
+    private final Integer int2;
 }
