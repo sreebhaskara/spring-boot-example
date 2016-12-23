@@ -9,35 +9,30 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.TestRestTemplate;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.net.HttpHeaders;
 
-import example.Application;
 import example.counter.CounterResult;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
-@IntegrationTest({"server.port=0"})
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CounterControllerIT {
 
     @Value("${local.server.port}")
     private int port;
 
     private URL base;
-    private RestTemplate template;
+    private TestRestTemplate template;
 
     @Before
     public void setUp() throws Exception {
@@ -57,13 +52,11 @@ public class CounterControllerIT {
     public void testAdd() throws Exception {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
         headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON.toString());
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE.toString());
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON.toString());
 
-        MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
-        body.add("int1", "2");
-        body.add("int2", "3");
+        String body = "{\"int1\":2, \"int2\":3}";
         
-        HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<MultiValueMap<String,String>>(
+        HttpEntity<String> request = new HttpEntity<String>(
                 body, headers);
 
         ResponseEntity<MyCounterResult> response = template.postForEntity(base.toString(), request,
