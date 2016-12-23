@@ -40,27 +40,19 @@ public class CounterControllerSpringRestTemplateTest {
         template = new TestRestTemplate();
     }
 
-    // for Jackson deserialization - Jackson needs its helper annotation to be able
-    // to use the constructor
-    static class MyCounterResult extends CounterResult {
-        public MyCounterResult(@JsonProperty("value") int value) {
-            super(value);
-        }
-    }
-
     @Test
     public void testAdd() throws Exception {
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-        headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON.toString());
-        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON.toString());
+        headers.add(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+        headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
 
         CounterRequest cRequest = new CounterRequest(2, 3);
         
         HttpEntity<CounterRequest> request = new HttpEntity<CounterRequest>(
-        		cRequest, headers);
+                cRequest, headers);
 
-        ResponseEntity<MyCounterResult> response = template.postForEntity(base.toString(), request,
-                MyCounterResult.class);
-        assertThat(response.getBody(), equalTo(new MyCounterResult(5)));
+        ResponseEntity<CounterResult> response = template.postForEntity(base.toString(), request,
+                CounterResult.class);
+        assertThat(response.getBody(), equalTo(new CounterResult(5)));
     }
 }
