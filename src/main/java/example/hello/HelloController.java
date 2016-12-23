@@ -17,12 +17,12 @@ public class HelloController {
     @RequestMapping(value = "/500/**")
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     public String internalError() {
-        return "Greetings from Spring Boot!";
+        return "Internal error from Spring Boot!";
     }
 
     @RequestMapping(value = "/400/**")
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public String badRequest() {
-        return "Greetings from Spring Boot!";
+        return "Bad request, says Spring Boot!";
     }
 }
