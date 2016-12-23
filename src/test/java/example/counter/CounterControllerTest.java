@@ -30,16 +30,18 @@ public class CounterControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        mvc = MockMvcBuilders.standaloneSetup(new CounterController()).build();
+        mvc = MockMvcBuilders.standaloneSetup(
+                new CounterController(new CounterService())).build();
     }
 
     @Test
     public void testAdd() throws Exception {
         MvcResult mvcResult = 
-                mvc.perform(MockMvcRequestBuilders.post("/add")
-                    .accept(MediaType.APPLICATION_JSON)
-                    .param("int1", "1")
-                    .param("int2", "2"))
+                mvc.perform(
+                        MockMvcRequestBuilders.post("/add")
+                            .accept(MediaType.APPLICATION_JSON)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"int1\":1, \"int2\":2}"))
                     .andExpect(status().isOk())
                     .andExpect(request().asyncStarted())
                     .andReturn();
@@ -49,10 +51,11 @@ public class CounterControllerTest {
     @Test
     public void testAdd2() throws Exception {
         MvcResult mvcResult = 
-                mvc.perform(MockMvcRequestBuilders.post("/add")
-                    .accept(MediaType.APPLICATION_JSON)
-                    .param("int1", "2")
-                    .param("int2", "3"))
+                mvc.perform(
+                        MockMvcRequestBuilders.post("/add")
+                            .accept(MediaType.APPLICATION_JSON)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"int1\":2, \"int2\":3}"))
                     .andExpect(status().isOk())
                     .andExpect(request().asyncStarted())
                     .andReturn();

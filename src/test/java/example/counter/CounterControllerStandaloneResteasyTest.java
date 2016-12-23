@@ -4,18 +4,19 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
+import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
-public class CounterControllerResteasyTest {
+public class CounterControllerStandaloneResteasyTest {
 
     @Test
     public void testRequest() {
         RestAssuredMockMvc
                 .given()
-                    .standaloneSetup(new CounterController())
+                    .standaloneSetup(new CounterController(new CounterService()))
                     .log().ifValidationFails()
-                    .param("int1", Integer.valueOf(1))
-                    .param("int2", Integer.valueOf(2))
+                    .contentType(ContentType.JSON)
+                    .body("{\"int1\":1, \"int2\":2}")
                 .when()
                     .async()
                     .post("/add")
