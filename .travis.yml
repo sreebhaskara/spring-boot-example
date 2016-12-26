@@ -4,9 +4,9 @@ sudo: false
 jdk:
   - oraclejdk8
 
-install: travis_wait mvn clean site --quiet -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+install: travis_wait mvn clean site --quiet --batch-mode -DbuildNumber=${TRAVIS_BUILD_NUMBER}
 
-script: "mvn verify"
+script: "mvn verify --quiet --batch-mode"
 
 notifications:
   email:
