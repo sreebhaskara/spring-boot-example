@@ -13,6 +13,23 @@
         <version>1.4.2.RELEASE</version>
     </parent>
 
+    <description>Simple Spring Boot app to get started.</description>
+    <url>https://github.com/eis/spring-boot-example</url>
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.org/eis/spring-boot-example</url>
+    </ciManagement>
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/eis/spring-boot-example/issues</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:git://github.com/eis/spring-boot-example.git</connection>
+        <developerConnection>scm:git:git@github.com:eis/spring-boot-example.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/eis/spring-boot-example</url>
+    </scm>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -152,5 +169,13 @@
             </plugin>
         </plugins>
     </build>
-
+    <reporting>
+        <outputDirectory>${basedir}/target/site</outputDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
