@@ -23,7 +23,7 @@ import com.google.common.net.HttpHeaders;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringRestTemplateTest {
+public class CounterControllerSpringRestTemplateIT {
 
     @LocalServerPort
     private int port;

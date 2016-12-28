@@ -20,7 +20,7 @@ import io.restassured.http.ContentType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringBootResteasyExceptionTest {
+public class CounterControllerSpringBootResteasyExceptionIT {
  
     @MockBean
     CounterService counterService;

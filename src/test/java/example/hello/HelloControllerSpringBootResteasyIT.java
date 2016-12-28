@@ -14,7 +14,7 @@ import io.restassured.RestAssured;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HelloControllerSpringBootResteasyTest {
+public class HelloControllerSpringBootResteasyIT {
     @LocalServerPort
     private int serverPort;
 
