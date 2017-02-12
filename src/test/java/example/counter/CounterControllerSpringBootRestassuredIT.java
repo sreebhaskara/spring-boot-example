@@ -15,7 +15,7 @@ import io.restassured.http.ContentType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringBootResteasyIT {
+public class CounterControllerSpringBootRestassuredIT {
     @LocalServerPort
     int port;
 
