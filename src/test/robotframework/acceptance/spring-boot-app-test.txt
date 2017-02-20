@@ -1,12 +1,14 @@
 *** Settings ***
-Library           Selenium2Library
+# Values: https://repo1.maven.org/maven2/com/github/markusbernhardt/robotframework-selenium2library-java/1.4.0.8/robotframework-selenium2library-java-1.4.0.8-libdoc.html
+Library           Selenium2Library      3   3   Log Source
 
 *** Variables ***
-${BROWSER}        Firefox
+# Values: http://sqa.stackexchange.com/a/6211
+${BROWSER}        HTMLUnit
 
 *** Test Cases ***
 Test spring-mvc-app
-  Open Browser  http://localhost:8080/
+  Open Browser  http://localhost:8080/        ${BROWSER}
   Page Should Contain  Greetings from Spring Boot!
   [Teardown]    Close Browser
 
