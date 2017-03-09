@@ -20,3 +20,23 @@ Answers to [http://localhost:8080/](http://localhost:8080/) (GET) and
 JSON interface.
 
 See [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) for usage.
+
+Docker stuff
+------------
+
+```bash
+# build container from Dockerfile
+docker build -t spring-boot-example .
+
+# run container
+docker run -ti -p 0.0.0.0:8080:8080 --rm spring-boot-example
+
+# call your container
+curl `docker-machine ip default`:8080
+
+# stop your container
+docker stop CONTAINERNAME
+
+# debug something
+docker ps
+```
