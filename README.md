@@ -1,10 +1,8 @@
 Simple Spring Boot app
 ======================
 
-[![Build Status](https://api.travis-ci.org/eis/spring-boot-example.svg?branch=master)]
-(https://travis-ci.org/eis/spring-boot-example)
-[![Coverage Status](http://img.shields.io/coveralls/eis/spring-boot-example/master.svg)]
-(https://coveralls.io/github/eis/spring-boot-example?branch=master)
+<a href="https://travis-ci.org/eis/spring-boot-example" title="Build Status"><img src="https://api.travis-ci.org/eis/spring-boot-example.svg?branch=master"></a>
+<a href="https://coveralls.io/github/eis/spring-boot-example?branch=master" title="Coverage Status"><img src="http://img.shields.io/coveralls/eis/spring-boot-example/master.svg"></a>
 
 Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - counter operation
