@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
@@ -34,6 +35,6 @@ public class HelloMVCControllerSpringBootRestassuredIT {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(200)
-                    .content(equalTo("Hello, foo!"));
+                    .body("html.body", contains("Hello, foo!"));
     }
 }
