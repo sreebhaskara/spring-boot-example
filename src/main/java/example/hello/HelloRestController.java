@@ -1,13 +1,16 @@
 package example.hello;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
-public class HelloController {
+@RequestMapping(produces = {"text/plain", "*/*"})
+public class HelloRestController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {

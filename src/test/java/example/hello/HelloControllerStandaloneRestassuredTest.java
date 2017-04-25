@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import example.hello.HelloController;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
 public class HelloControllerStandaloneRestassuredTest {
@@ -13,7 +12,7 @@ public class HelloControllerStandaloneRestassuredTest {
     public void testRequest() {
         RestAssuredMockMvc
                 .given()
-                    .standaloneSetup(new HelloController())
+                    .standaloneSetup(new HelloRestController())
                     .log().ifValidationFails()
                 .when()
                     .get("/")
@@ -26,7 +25,7 @@ public class HelloControllerStandaloneRestassuredTest {
     public void test500Request() {
         RestAssuredMockMvc
                 .given()
-                    .standaloneSetup(new HelloController())
+                    .standaloneSetup(new HelloRestController())
                     .log().ifValidationFails()
                 .when()
                     .get("/500")
@@ -39,7 +38,7 @@ public class HelloControllerStandaloneRestassuredTest {
     public void test400Request() {
         RestAssuredMockMvc
                 .given()
-                    .standaloneSetup(new HelloController())
+                    .standaloneSetup(new HelloRestController())
                     .log().ifValidationFails()
                 .when()
                     .get("/400")
