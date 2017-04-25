@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
-public class HelloControllerStandaloneRestassuredTest {
+public class HelloRestControllerStandaloneRestassuredTest {
 
     @Test
     public void testRequest() {

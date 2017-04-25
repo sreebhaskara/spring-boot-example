@@ -1,7 +1,7 @@
 package example.hello;
 
-import static org.hamcrest.Matchers.equalTo;
-
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,11 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.restassured.RestAssured;
+import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class HelloControllerSpringBootRestassuredIT {
+public class HelloMVCControllerSpringBootRestassuredIT {
     @LocalServerPort
     private int serverPort;
 
@@ -25,14 +25,15 @@ public class HelloControllerSpringBootRestassuredIT {
     }
     @Test
     public void testRequest() {
-        io.restassured.RestAssured
+        RestAssured
                 .given()
+                    .accept(ContentType.HTML)
                     .log().ifValidationFails()
                 .when()
                     .get("/")
                 .then()
                     .log().ifValidationFails()
                     .statusCode(200)
-                    .content(equalTo("Greetings from Spring Boot!"));
+                    .content(equalTo("Hello, foo!"));
     }
 }
