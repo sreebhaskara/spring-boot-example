@@ -35,6 +35,6 @@ public class HelloMVCControllerSpringBootRestassuredIT {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(200)
-                    .body("html.body", contains("Hello, foo!"));
+                    .body("html.body.div.form.div.input[0].@placeholder", equalTo("First number") );
     }
 }
