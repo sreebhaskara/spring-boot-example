@@ -9,7 +9,7 @@ ${BROWSER}        HTMLUnit
 *** Test Cases ***
 Test spring-mvc-app
   Open Browser  http://localhost:8080/        ${BROWSER}
-  Page Should Contain  Greetings from Spring Boot!
+  Page Should Contain  Hello, Firefox 38!
   [Teardown]    Close Browser
 
 *** Keywords ***
