@@ -36,7 +36,7 @@ public class HelloMVCControllerSpringBootRestassuredIT {
                     .log().ifValidationFails()
                     .statusCode(200)
                     .body("**.findAll { it.@class == 'form-control' }[0].@placeholder",
-                            equalTo("First number") )
+                        equalTo("First number") )
                     .body("**.findAll { it.@class == 'form-control' }[1].@placeholder",
                         equalTo("Second number") )
         ;
