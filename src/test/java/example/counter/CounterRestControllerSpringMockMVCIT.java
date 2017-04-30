@@ -40,6 +40,15 @@ public class CounterRestControllerSpringMockMVCIT {
                 .andExpect(content().json("{\"value\": 3}", false));
     }
     @Test
+    public void testAddOverflow() throws Exception {
+        mvc.perform(
+                MockMvcRequestBuilders.post(CounterRestController.ADD_URL)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"int1\":1121121211212, \"int2\":222}"))
+                .andExpect(status().isBadRequest());
+    }
+    @Test
     public void testAdd2() throws Exception {
         MvcResult mvcResult = 
                 mvc.perform(

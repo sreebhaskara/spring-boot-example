@@ -12,3 +12,8 @@
 .container {
     width: 100%;
 }
+#result {
+    border: solid #dadada 2px;
+    padding: 2px;
+    width: 10em;
+}
