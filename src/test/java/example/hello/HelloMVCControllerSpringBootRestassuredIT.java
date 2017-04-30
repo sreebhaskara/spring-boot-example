@@ -38,7 +38,7 @@ public class HelloMVCControllerSpringBootRestassuredIT {
                     .log().ifValidationFails()
                     .statusCode(200)
                     .body("html.head.title",
-                        equalTo("Spring Boot Thymeleaf Hello World Example"))
+                        equalTo("Greetings"))
                     .body("html.body.div.div.h2.span",
                         equalTo("Hello, Rest-Assured!") )
         ;
