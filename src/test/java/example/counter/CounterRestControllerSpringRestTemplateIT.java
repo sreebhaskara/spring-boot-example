@@ -20,7 +20,7 @@ import com.google.common.net.HttpHeaders;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringRestTemplateIT {
+public class CounterRestControllerSpringRestTemplateIT {
 
     @Autowired
     private TestRestTemplate template;
@@ -36,7 +36,9 @@ public class CounterControllerSpringRestTemplateIT {
         HttpEntity<CounterRequest> request = new HttpEntity<CounterRequest>(
                 cRequest, headers);
 
-        ResponseEntity<CounterResult> response = template.postForEntity("/add", request,
+        ResponseEntity<CounterResult> response = template.postForEntity(
+                CounterRestController.ADD_URL,
+                request,
                 CounterResult.class);
         assertThat(response.getBody(), equalTo(new CounterResult(5)));
     }

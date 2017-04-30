@@ -15,14 +15,16 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(
         produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE)
-public class CounterController {
+public class CounterRestController {
+    public static final String ADD_URL = "/counter/add";
+    
     private final CounterService counterService;
 
-    public CounterController(CounterService counterService) {
+    public CounterRestController(CounterService counterService) {
         this.counterService = counterService;
     }
 
-    @RequestMapping(value = "/add",
+    @RequestMapping(value = ADD_URL,
             method = RequestMethod.POST)
     @ApiOperation(value = "add two numbers together", response = CounterResult.class)
     public DeferredResult<CounterResult> add(@RequestBody @Valid

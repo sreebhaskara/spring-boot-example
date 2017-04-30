@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CounterControllerSpringMockMVCIT {
+public class CounterRestControllerSpringMockMVCIT {
 
     @Autowired
     MockMvc mvc;
@@ -29,7 +29,7 @@ public class CounterControllerSpringMockMVCIT {
     public void testAdd() throws Exception {
         MvcResult mvcResult = 
                 mvc.perform(
-                        MockMvcRequestBuilders.post("/add")
+                        MockMvcRequestBuilders.post(CounterRestController.ADD_URL)
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content("{\"int1\":1, \"int2\":2}"))
@@ -43,7 +43,7 @@ public class CounterControllerSpringMockMVCIT {
     public void testAdd2() throws Exception {
         MvcResult mvcResult = 
                 mvc.perform(
-                        MockMvcRequestBuilders.post("/add")
+                        MockMvcRequestBuilders.post(CounterRestController.ADD_URL)
                             .accept(MediaType.APPLICATION_JSON)
                             .contentType(MediaType.APPLICATION_JSON)
                             .content("{\"int1\":2, \"int2\":3}"))

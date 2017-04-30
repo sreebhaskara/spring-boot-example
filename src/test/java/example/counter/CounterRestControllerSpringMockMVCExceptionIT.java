@@ -17,8 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.HttpClientErrorException;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(CounterController.class)
-public class CounterControllerSpringMockMVCExceptionIT {
+@WebMvcTest(CounterRestController.class)
+public class CounterRestControllerSpringMockMVCExceptionIT {
     @Autowired
     private MockMvc mvc;
     
@@ -29,7 +29,7 @@ public class CounterControllerSpringMockMVCExceptionIT {
     public void getVehicleShouldReturnMakeAndModel() throws Exception {
         given(this.counterService.count(notNull(CounterRequest.class)))
             .willThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
-        this.mvc.perform(post("/add")
+        this.mvc.perform(post(CounterRestController.ADD_URL)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"int1\":1, \"int2\":2}")

@@ -59,6 +59,25 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- static resources -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery</artifactId>
+            <version>1.12.4</version>
+        </dependency>
+
+        <!-- user agent analysis -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.20</version>
+        </dependency>
+
         <!-- Swagger for api documentation -->
         <dependency>
             <groupId>io.springfox</groupId>

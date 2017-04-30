@@ -12,6 +12,7 @@ Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - robot acceptance test
   - Travis configurations
   - Swagger documentation
+  - Thymeleaf MVC
 
 Answers to [http://localhost:8080/](http://localhost:8080/) (GET) and
 [http://localhost:8080/add](http://localhost:8080/add) (POST), latter being

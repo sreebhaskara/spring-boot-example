@@ -1,4 +1,4 @@
-package example.hello;
+package example.counter;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,24 +11,21 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HelloMVCControllerSpringMockMVCIT {
+public class CounterMVCControllerSpringMockMVCIT {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
     public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/")
-            .accept(MediaType.TEXT_HTML)
-            .header("User-Agent", "MVC-Tester"))
+        mvc.perform(MockMvcRequestBuilders.get(CounterMVCController.COUNTER_VIEW_URL).accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, MVC-Tester!")));
+                .andExpect(content().string(containsString("First number")));
     }
 }

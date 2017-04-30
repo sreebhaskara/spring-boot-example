@@ -20,7 +20,7 @@ import io.restassured.http.ContentType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class CounterControllerSpringBootRestassuredExceptionIT {
+public class CounterRestControllerSpringBootRestassuredExceptionIT {
  
     @MockBean
     CounterService counterService;
@@ -44,7 +44,7 @@ public class CounterControllerSpringBootRestassuredExceptionIT {
                     .body("{\"int1\":1, \"int2\":2}")
                     .log().ifValidationFails()
                 .when()
-                    .post("/add")
+                    .post(CounterRestController.ADD_URL)
                 .then()
                     .log().ifValidationFails()
                     .statusCode(401);
@@ -61,7 +61,7 @@ public class CounterControllerSpringBootRestassuredExceptionIT {
                     .body("{\"int1\":1, \"int2\":2}")
                     .log().ifValidationFails()
                 .when()
-                    .post("/add")
+                    .post(CounterRestController.ADD_URL)
                 .then()
                     .log().ifValidationFails()
                     .statusCode(500);

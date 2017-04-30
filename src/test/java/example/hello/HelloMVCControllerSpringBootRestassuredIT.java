@@ -1,7 +1,9 @@
 package example.hello;
 
+import example.counter.CounterMVCController;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
@@ -29,16 +30,17 @@ public class HelloMVCControllerSpringBootRestassuredIT {
         RestAssured
                 .given()
                     .accept(ContentType.HTML)
+                    .header(new Header("User-Agent","Rest-Assured"))
                     .log().ifValidationFails()
                 .when()
-                    .get("/")
+                    .get(HelloMVCController.HELLO_VIEW_URL)
                 .then()
                     .log().ifValidationFails()
                     .statusCode(200)
-                    .body("**.findAll { it.@class == 'form-control' }[0].@placeholder",
-                        equalTo("First number") )
-                    .body("**.findAll { it.@class == 'form-control' }[1].@placeholder",
-                        equalTo("Second number") )
+                    .body("html.head.title",
+                        equalTo("Spring Boot Thymeleaf Hello World Example"))
+                    .body("html.body.div.div.h2.span",
+                        equalTo("Hello, Rest-Assured!") )
         ;
     }
 }

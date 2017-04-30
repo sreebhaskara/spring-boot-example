@@ -10,7 +10,11 @@ public class CounterConfig {
         return new CounterService();
     }
     @Bean
-    public CounterController counterController(CounterService counterService) {
-        return new CounterController(counterService);
+    public CounterRestController counterRestController(CounterService counterService) {
+        return new CounterRestController(counterService);
+    }
+    @Bean
+    public CounterMVCController counterMVCController() {
+        return new CounterMVCController();
     }
 }
