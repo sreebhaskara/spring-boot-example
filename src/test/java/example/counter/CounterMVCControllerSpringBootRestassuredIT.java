@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -34,7 +35,7 @@ public class CounterMVCControllerSpringBootRestassuredIT {
                     .get(CounterMVCController.COUNTER_VIEW_URL)
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
+                    .statusCode(SC_OK)
                     .body("**.findAll { it.@class == 'form-control' }[0].@placeholder",
                         equalTo("First number") )
                     .body("**.findAll { it.@class == 'form-control' }[1].@placeholder",

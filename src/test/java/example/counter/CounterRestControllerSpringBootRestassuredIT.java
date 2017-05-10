@@ -1,5 +1,6 @@
 package example.counter;
 
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Before;
@@ -27,7 +28,7 @@ public class CounterRestControllerSpringBootRestassuredIT {
     public void testRequest() {
         RestAssured
                 .given()
-                    .accept("application/json")
+                    .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body("{\"int1\":1, \"int2\":2}")
                     .log().ifValidationFails()
@@ -35,7 +36,7 @@ public class CounterRestControllerSpringBootRestassuredIT {
                     .post(CounterRestController.ADD_URL)
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
+                    .statusCode(SC_OK)
                     .content("value",equalTo(3));
     }
 }

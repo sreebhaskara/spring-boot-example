@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringRunner.class)
@@ -36,7 +37,7 @@ public class HelloMVCControllerSpringBootRestassuredIT {
                     .get(HelloMVCController.HELLO_VIEW_URL)
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
+                    .statusCode(SC_OK)
                     .body("html.head.title",
                         equalTo("Greetings"))
                     .body("html.body.div.div.h2.span",

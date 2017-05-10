@@ -1,5 +1,8 @@
 package example.hello;
 
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
@@ -18,7 +21,7 @@ public class HelloRestControllerStandaloneRestassuredTest {
                     .get("/")
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
+                    .statusCode(SC_OK)
                     .content(equalTo("Greetings from Spring Boot!"));
     }
     @Test
@@ -31,7 +34,7 @@ public class HelloRestControllerStandaloneRestassuredTest {
                     .get("/500")
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(500)
+                    .statusCode(SC_INTERNAL_SERVER_ERROR)
                     .content(equalTo("Internal error from Spring Boot!"));
     }
     @Test
@@ -44,7 +47,7 @@ public class HelloRestControllerStandaloneRestassuredTest {
                     .get("/400")
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(400)
+                    .statusCode(SC_BAD_REQUEST)
                     .content(equalTo("Bad request, says Spring Boot!"));
     }
 }

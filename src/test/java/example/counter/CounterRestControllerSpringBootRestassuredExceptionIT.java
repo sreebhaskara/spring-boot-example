@@ -1,5 +1,7 @@
 package example.counter;
 
+import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
+import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.when;
@@ -39,7 +41,7 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
             .thenThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
         RestAssured
                 .given()
-                    .accept("application/json")
+                    .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body("{\"int1\":1, \"int2\":2}")
                     .log().ifValidationFails()
@@ -47,7 +49,7 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
                     .post(CounterRestController.ADD_URL)
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(401);
+                    .statusCode(SC_UNAUTHORIZED);
     }
     @Test
     public void testNPERequest() {
@@ -56,7 +58,7 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
             .thenThrow(new NullPointerException());
         RestAssured
                 .given()
-                    .accept("application/json")
+                    .accept(ContentType.JSON)
                     .contentType(ContentType.JSON)
                     .body("{\"int1\":1, \"int2\":2}")
                     .log().ifValidationFails()
@@ -64,6 +66,6 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
                     .post(CounterRestController.ADD_URL)
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(500);
+                    .statusCode(SC_INTERNAL_SERVER_ERROR);
     }
 }

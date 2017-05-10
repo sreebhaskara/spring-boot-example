@@ -1,5 +1,6 @@
 package example.hello;
 
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Before;
@@ -32,7 +33,7 @@ public class HelloRestControllerSpringBootRestassuredIT {
                     .get("/")
                 .then()
                     .log().ifValidationFails()
-                    .statusCode(200)
+                    .statusCode(SC_OK)
                     .content(equalTo("Greetings from Spring Boot!"));
     }
 }
