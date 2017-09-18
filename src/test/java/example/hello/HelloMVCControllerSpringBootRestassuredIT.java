@@ -1,6 +1,5 @@
 package example.hello;
 
-import example.counter.CounterMVCController;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
