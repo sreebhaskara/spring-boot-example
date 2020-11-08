@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CounterConfig {
-    @Bean // using counterService name here would be overridden by spring boot metrics
-    public CounterService myCounterService() {
+    @Bean
+    public CounterService counterService() {
         return new CounterService();
     }
     @Bean
