@@ -1,7 +1,6 @@
 package example.counter;
 
-import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
-import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
+import static org.apache.http.HttpStatus.*;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.when;
@@ -37,7 +36,7 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
     @Test
     public void testUnauthorizedRequest() {
         assertNotNull(counterService);
-        when(counterService.count(notNull(CounterRequest.class)))
+        when(counterService.count(notNull()))
             .thenThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
         RestAssured
                 .given()
@@ -54,7 +53,7 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
     @Test
     public void testNPERequest() {
         assertNotNull(counterService);
-        when(counterService.count(notNull(CounterRequest.class)))
+        when(counterService.count(notNull()))
             .thenThrow(new NullPointerException());
         RestAssured
                 .given()

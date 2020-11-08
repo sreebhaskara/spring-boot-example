@@ -26,8 +26,8 @@ public class CounterRestControllerSpringMockMVCExceptionIT {
     private CounterService counterService;
     
     @Test
-    public void getVehicleShouldReturnMakeAndModel() throws Exception {
-        given(this.counterService.count(notNull(CounterRequest.class)))
+    public void unauthorizedExceptionFlowsThrough() throws Exception {
+        given(this.counterService.count(notNull()))
             .willThrow(new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
         this.mvc.perform(post(CounterRestController.ADD_URL)
                 .accept(MediaType.APPLICATION_JSON)
