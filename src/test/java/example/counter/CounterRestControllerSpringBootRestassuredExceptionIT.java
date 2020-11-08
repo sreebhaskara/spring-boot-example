@@ -67,4 +67,20 @@ public class CounterRestControllerSpringBootRestassuredExceptionIT {
                     .log().ifValidationFails()
                     .statusCode(SC_INTERNAL_SERVER_ERROR);
     }
+
+    @Test
+    public void testGETRequest() {
+        RestAssured
+                .given()
+                .accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body("{\"int1\":1, \"int2\":2}")
+                .log().ifValidationFails()
+                .when()
+                .get(CounterRestController.ADD_URL)
+                .then()
+                .log().ifValidationFails()
+                .statusCode(SC_METHOD_NOT_ALLOWED);
+    }
+
 }

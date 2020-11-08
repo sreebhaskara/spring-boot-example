@@ -28,13 +28,4 @@ public class CounterControllerAdvise  {
         return ResponseEntity.status(e.getStatusCode())
                 .body(singletonMap("message", e.getStatusText()));
     }
-
-    @ExceptionHandler(Throwable.class)
-    ResponseEntity<Map<String,String>> onException(Throwable t) {
-        
-        log.error("Request processing failed", t);
-
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(singletonMap("message", "internal_error"));
-    }
 }
