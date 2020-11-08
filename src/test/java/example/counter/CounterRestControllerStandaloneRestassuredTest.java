@@ -1,14 +1,12 @@
 package example.counter;
 
+import io.restassured.http.ContentType;
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import org.junit.Test;
+
 import static org.apache.http.HttpStatus.SC_METHOD_NOT_ALLOWED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
-
-import io.restassured.RestAssured;
-import org.junit.Test;
-
-import io.restassured.http.ContentType;
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
 
 public class CounterRestControllerStandaloneRestassuredTest {
 

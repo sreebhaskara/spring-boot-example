@@ -1,10 +1,7 @@
 package example.counter;
 
-import static org.apache.http.HttpStatus.*;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.notNull;
-import static org.mockito.Mockito.when;
-
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+import static org.apache.http.HttpStatus.*;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.notNull;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)

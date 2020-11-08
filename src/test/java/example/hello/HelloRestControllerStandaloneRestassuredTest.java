@@ -1,13 +1,10 @@
 package example.hello;
 
-import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
-import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.Matchers.equalTo;
-
+import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Test;
 
-import io.restassured.module.mockmvc.RestAssuredMockMvc;
+import static org.apache.http.HttpStatus.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class HelloRestControllerStandaloneRestassuredTest {
 
