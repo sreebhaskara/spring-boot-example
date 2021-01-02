@@ -6,7 +6,7 @@ jdk:
   - openjdk8
   - openjdk11
 
-script: travis_wait mvn verify --batch-mode
+script: travis_wait mvn verify --quiet --batch-mode
 
 notifications:
   email:
