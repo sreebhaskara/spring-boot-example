@@ -1,7 +1,7 @@
 package example.hello;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
