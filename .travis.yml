@@ -6,7 +6,7 @@ jdk:
   - openjdk8
   - openjdk11
 
-script: travis_wait mvn verify --quiet --batch-mode
+script: travis_wait mvn verify --batch-mode
 
 notifications:
   email:
@@ -19,4 +19,4 @@ after_failure:
   - cat target/surefire-reports/*.txt
 
 after_success:
-  - travis_wait mvn jacoco:report coveralls:report --batch-mode -DbuildNumber=${TRAVIS_BUILD_NUMBER}
+  - travis_wait mvn jacoco:report coveralls:report --quiet --batch-mode -DbuildNumber=${TRAVIS_BUILD_NUMBER}
