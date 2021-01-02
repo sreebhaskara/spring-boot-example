@@ -5,14 +5,17 @@ Simple Spring Boot app
 <a href="https://coveralls.io/github/eis/spring-boot-example?branch=master" title="Coverage Status"><img src="http://img.shields.io/coveralls/eis/spring-boot-example/master.svg"></a>
 
 Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
+  - Thymeleaf MVC
   - counter operation
+  - Swagger api documentation
   - "runme" scripts
-  - integration test
+  - integration tests
   - resteasy tests
   - robot acceptance test
   - Travis configurations
-  - Swagger documentation
-  - Thymeleaf MVC
+  - Coveralls integration
+  - Dockerfile
+  - Vagrantfile
 
 Answers to [http://localhost:8080/](http://localhost:8080/) (GET) and
 [http://localhost:8080/add](http://localhost:8080/add) (POST), latter being
