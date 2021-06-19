@@ -22,3 +22,20 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn verify --batch-mode
+
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+      - name: Coverage with Maven
+        run: mvn jacoco:report --quiet --batch-mode -DbuildNumber=${GITHUB_RUN_NUMBER}
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
