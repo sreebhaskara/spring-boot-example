@@ -38,5 +38,5 @@ jobs:
       - uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
-          files: ./**/target/site/jacoco/jacoco.xml
+          file: target/site/jacoco/jacoco.xml
           name: codecov
