@@ -15,6 +15,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: coverage-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            coverage-${{ runner.os }}-maven-
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
@@ -28,15 +35,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: coverage-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            coverage-${{ runner.os }}-maven-
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
-      - name: Coverage with Maven
-        run: mvn jacoco:report --quiet --batch-mode -DbuildNumber=${GITHUB_RUN_NUMBER}
+      - name: Coverage with Jacoco Maven plugin
+        run: mvn verify jacoco:report --quiet --batch-mode -DbuildNumber=${GITHUB_RUN_NUMBER}
       - uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
-          file: target/site/jacoco/jacoco.xml
+          file: ./**/target/site/jacoco/jacoco.xml
           name: codecov
