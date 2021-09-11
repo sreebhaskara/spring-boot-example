@@ -43,3 +43,5 @@ docker stop CONTAINERNAME
 # debug something
 docker ps
 ```
+
+For Docker job on AWS, see [Docker sample for CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-docker.html)
