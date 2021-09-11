@@ -8,9 +8,6 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
-      - echo This is assuming Amazon Linux, which is CentOS-based
-      - yum makecache
-      - yum install -y maven
     finally:
       - echo This always runs even if the update or install command fails 
   pre_build:
