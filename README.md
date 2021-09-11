@@ -12,7 +12,8 @@ Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - integration tests
   - resteasy tests
   - robot acceptance test
-  - Actions build
+  - GitHub Actions build
+  - AWS CodeBuild build
   - CodeCov integration
   - Dockerfile
   - Vagrantfile
