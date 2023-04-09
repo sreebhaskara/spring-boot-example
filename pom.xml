@@ -16,11 +16,11 @@
     <description>Simple Spring Boot app to get started.</description>
     <url>https://github.com/eis/spring-boot-example</url>
     <ciManagement>
-        <system>Travis</system>
-        <url>https://travis-ci.org/eis/spring-boot-example</url>
+        <system>GitHub Actions</system>
+        <url>https://github.com/eis/spring-boot-example/actions</url>
     </ciManagement>
     <issueManagement>
-        <system>Github</system>
+        <system>GitHub Issues</system>
         <url>https://github.com/eis/spring-boot-example/issues</url>
     </issueManagement>
     <scm>
