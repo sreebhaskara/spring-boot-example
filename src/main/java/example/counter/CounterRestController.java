@@ -2,14 +2,13 @@ package example.counter;
 
 import javax.validation.Valid;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
-
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(
@@ -26,7 +25,7 @@ public class CounterRestController {
 
     @RequestMapping(value = ADD_URL,
             method = RequestMethod.POST)
-    @ApiOperation(value = "add two numbers together", response = CounterResult.class)
+    @Operation(summary = "add two numbers together")
     public DeferredResult<CounterResult> add(@RequestBody @Valid
             CounterRequest counterRequest) {
         DeferredResult<CounterResult> result = new DeferredResult<>();

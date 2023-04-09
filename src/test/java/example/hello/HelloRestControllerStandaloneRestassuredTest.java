@@ -19,7 +19,7 @@ public class HelloRestControllerStandaloneRestassuredTest {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(SC_OK)
-                    .content(equalTo("Greetings from Spring Boot!"));
+                    .body(equalTo("Greetings from Spring Boot!"));
     }
     @Test
     public void test500Request() {
@@ -32,7 +32,7 @@ public class HelloRestControllerStandaloneRestassuredTest {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(SC_INTERNAL_SERVER_ERROR)
-                    .content(equalTo("Internal error from Spring Boot!"));
+                    .body(equalTo("Internal error from Spring Boot!"));
     }
     @Test
     public void test400Request() {
@@ -45,6 +45,6 @@ public class HelloRestControllerStandaloneRestassuredTest {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(SC_BAD_REQUEST)
-                    .content(equalTo("Bad request, says Spring Boot!"));
+                    .body(equalTo("Bad request, says Spring Boot!"));
     }
 }

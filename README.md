@@ -4,10 +4,10 @@ Simple Spring Boot app
 <a href="https://github.com/eis/spring-boot-example/actions/workflows/github-actions-build.yml" title="Build Status"><img src="https://github.com/eis/spring-boot-example/actions/workflows/github-actions-build.yml/badge.svg"></a>
 <a href="https://codecov.io/gh/eis/spring-boot-example" title="Coverage Status"><img src="https://codecov.io/gh/eis/spring-boot-example/branch/master/graph/badge.svg?token=6PUI9CYUZR"></a>
 
-Started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
+Originally started from tutorial at https://spring.io/guides/gs/spring-boot/ but with added
   - Thymeleaf MVC
   - counter operation
-  - Swagger api documentation
+  - Springdoc api documentation
   - "runme" scripts
   - integration tests
   - resteasy tests

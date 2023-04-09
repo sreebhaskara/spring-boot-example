@@ -25,7 +25,7 @@ public class CounterRestControllerStandaloneRestassuredTest {
                 .then()
                     .log().ifValidationFails()
                     .statusCode(SC_OK)
-                    .content("value",equalTo(3));
+                    .body("value",equalTo(3));
     }
 
     @Test
