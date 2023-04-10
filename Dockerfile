@@ -1,7 +1,5 @@
-# java:8 is 600M+, alpine < 200M
-# FROM java:8
-
-FROM adoptopenjdk/openjdk11:alpine-slim
+# java:8 containers are 600M+, alpine < 200M
+FROM openjdk/17-jdk-slim
 
 EXPOSE 8080
 COPY target/spring-boot-example-1.0-SNAPSHOT.jar /app.jar
