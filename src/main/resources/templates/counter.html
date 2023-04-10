@@ -13,7 +13,21 @@
     <script type="text/javascript" src="/js/counter.js"></script>
 </head>
 <body>
-    <div class="container vertical-center text-center">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://projects.spring.io/spring-boot/">Spring Boot</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li class="active"><a href="/counter">Counter</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container vertical-center text-center" id="main">
         <form class="form-inline">
             <div class="form-group">
                 <label class="sr-only" for="inputFirst">First number</label>
