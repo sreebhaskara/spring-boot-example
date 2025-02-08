@@ -3,7 +3,8 @@ version: 0.2
 env:
   variables:
     MAVEN_OPTS: '-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn'
-
+    AWS_DEFAULT_REGION: us-east-1
+    AWS_ACCOUNT_ID: 381491822780
 phases:
   install:
     commands:
